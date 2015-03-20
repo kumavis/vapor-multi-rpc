@@ -1,16 +1,18 @@
-var express = require('express')
+var HttpMaster = require('http-master');
+var treeify = require('treeify').asTree
+var routerConfig = require('./router.json')
+var webServer = require('./web.js')
 var startRpc = require('./rpc.js')
+var PORT = process.env.PORT || 5000
 
-var app = express()
+webServer()
 startRpc()
 
-app.set('port', (process.env.PORT || 5000))
-app.use(express.static(__dirname + '/public'))
+var proxyConfig = { ports: {} }
+proxyConfig.ports[PORT] = { router: routerConfig }
 
-app.get('/', function(request, response) {
-  response.send('Hello World!')
-})
-
-app.listen(app.get('port'), function() {
-  console.log("Node app is running at localhost:" + app.get('port'))
+var httpMaster = new HttpMaster()
+httpMaster.init(proxyConfig, function(err) {
+  console.log('PROXY listening on', PORT)
+  console.log('with config:\n', treeify(proxyConfig, true))
 })

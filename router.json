@@ -1,0 +1,4 @@
+{
+  "localhost/admin/*": "3000/[1]",
+  "localhost": 8080
+}
