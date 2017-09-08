@@ -9,11 +9,11 @@
   "dependencies": {
     "body-parser": "^1.12.2",
     "ethereum-tests": "git+https://github.com/ethereum/tests.git#develop",
-    "ethereumjs-lib": "0.1.10",
-    "ethereumjs-util": "0.0.8",
-    "express": "~4.9.x",
+    "ethereumjs-lib": "3.0.0",
+    "ethereumjs-util": "5.1.2",
+    "express": "~4.15.4",
     "http-master": "^1.0.7",
-    "node-ethereum": "0.0.1",
+    "node-ethereum": "1.2.1",
     "treeify": "^1.0.1"
   },
   "engines": {
